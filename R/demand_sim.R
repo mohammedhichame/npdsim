@@ -81,7 +81,7 @@ demand_sim <- function(products_number,periods_number,shape_number, shape_type="
 
   # sale_modified=sale+noise
 
-  product_sales$demand <- product_sales$sale + product_sales$noise
+  product_sales$demand <- product_sales$demand_wn + product_sales$noise
 
   # if sale+noise is negative, assign 0
   product_sales$demand[product_sales$demand<0] <- 0
