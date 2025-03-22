@@ -2,8 +2,12 @@
 #'
 #' @param periods_number Number of time periods of the products life cycle
 #' @param shape_number Number of generic shapes
-#' @param shape_type Type shape to generate. It can take the values: "triangle", "trapezoid", "bass", "random"
-#'              The type "random" picks one the other types randomly for each product.
+#' @param shape_type Type of shape to generate. It can take the values: "triangle",
+#'            "trapezoid", "bass", "random" and "intro & growth".
+#'              The type "random" picks one of the types "triangle",
+#'            "trapezoid", "bass" randomly for each product.
+#'            The type "intro & growth" is used for the shapes of the introduction
+#'            and growth phases.
 #'
 #' @return A numeric dateframe of three colunms: time, shape and assigned_shape
 #' @export
@@ -43,6 +47,14 @@ shape_sim <- function(periods_number,shape_number,shape_type="random") {
 
     return(shape_sim_random(periods_number,
                            shape_number))
+
+  }
+
+  if (shape_type=="intro & growth") {
+
+
+    return(shape_sim_ig(periods_number,
+                            shape_number))
 
   }
 

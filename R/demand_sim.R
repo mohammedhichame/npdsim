@@ -3,8 +3,12 @@
 #' @param products_number Number of products
 #' @param periods_number Number of periods of the introduction and growth phases
 #' @param shape_number Number of generic shapes
-#' @param shape_type Type shape to generate. It can take the values: "triangle", "trapezoid", "bass", "random"
-#'              The type "random" picks one the other types randomly for each product.
+#' @param shape_type Type of shape to generate. It can take the values: "triangle",
+#'            "trapezoid", "bass", "random" and "intro & growth".
+#'              The type "random" picks one of the types "triangle",
+#'            "trapezoid", "bass" randomly for each product.
+#'            The type "intro & growth" is used for the shapes of the introduction
+#'            and growth phases.
 #' @param level_number Number of generic levels
 #' @param level_range Range of values from which the level is sampled
 #' @param noise_cv The coefficient of variation of the noise added to the simulated sales

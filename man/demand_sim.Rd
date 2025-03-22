@@ -21,8 +21,12 @@ demand_sim(
 
 \item{shape_number}{Number of generic shapes}
 
-\item{shape_type}{Type shape to generate. It can take the values: "triangle", "trapezoid", "bass", "random"
-The type "random" picks one the other types randomly for each product.}
+\item{shape_type}{Type of shape to generate. It can take the values: "triangle",
+"trapezoid", "bass", "random" and "intro & growth".
+  The type "random" picks one of the types "triangle",
+"trapezoid", "bass" randomly for each product.
+The type "intro & growth" is used for the shapes of the introduction
+and growth phases.}
 
 \item{level_number}{Number of generic levels}
 
