@@ -44,8 +44,7 @@ A date frame that contains the following columns: product_id, shape and assigned
 Simulate the demand for new products during their life cycle by specifying their life cycle shape
 }
 \examples{
-demand_sim(products_number=100,periods_number=20,shape_number=5, level_number=20,
-level_range=1000:10000,noise_cv=0.05)
+demand_sim(products_number=100,periods_number=20,shape_number=5, level_number=20)
 
 demand_sim(products_number=100,periods_number=20,shape_number=5, shape_type="bass", level_number=20,
 level_range=1000:10000,noise_cv=0.05)
