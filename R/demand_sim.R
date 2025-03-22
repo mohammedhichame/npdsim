@@ -9,7 +9,7 @@
 #' @param level_range Range of values from which the level is sampled
 #' @param noise_cv The coefficient of variation of the noise added to the simulated sales
 #'
-#' @return A date frame of three colunms product_id, shape and assigned_shape,
+#' @return A date frame that contains the following columns: product_id, shape and assigned_shape,
 #'          level and assigned_level, demand_wn (demand without noise, not rounded),
 #'          noise and demand. demand is the rounded value of the Max
 #'          between (demand_wn+noise) and 0
@@ -25,7 +25,7 @@
 #' level_range=1000:10000,noise_cv=0.05)
 demand_sim <- function(products_number,periods_number,shape_number, shape_type="random",
                        level_number,level_range=1000:10000,
-                       noise_cv) {
+                       noise_cv=0.05) {
 
 
   stopifnot("products_number must be a numeric"=is.numeric(products_number))

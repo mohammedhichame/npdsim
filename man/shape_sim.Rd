@@ -2,7 +2,7 @@
 % Please edit documentation in R/shape_sim.R
 \name{shape_sim}
 \alias{shape_sim}
-\title{Generate the shape of demand of new products by specifying their life cycle shape and and the length of their life cycle}
+\title{Generate the shape of demand of new products by specifying their life cycle shape and the length of their life cycle}
 \usage{
 shape_sim(periods_number, shape_number, shape_type = "random")
 }
@@ -18,7 +18,7 @@ The type "random" picks one the other types randomly for each product.}
 A numeric dateframe of three colunms: time, shape and assigned_shape
 }
 \description{
-Generate the shape of demand of new products by specifying their life cycle shape and and the length of their life cycle
+Generate the shape of demand of new products by specifying their life cycle shape and the length of their life cycle
 }
 \examples{
 shape_sim(periods_number=20, shape_number=5)

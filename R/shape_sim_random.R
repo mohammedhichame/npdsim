@@ -6,6 +6,8 @@
 #' @return A numeric dateframe of three colunms: time, shape and assigned_shape
 #' @export
 #'
+#' @import dplyr
+#'
 #' @examples
 #' shape_sim_random(periods_number=20, shape_number=5)
 shape_sim_random <- function(periods_number,shape_number) {

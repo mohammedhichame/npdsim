@@ -1,4 +1,4 @@
-#' Generate the shape of demand of new products by specifying their life cycle shape and and the length of their life cycle
+#' Generate the shape of demand of new products by specifying their life cycle shape and the length of their life cycle
 #'
 #' @param periods_number Number of time periods of the products life cycle
 #' @param shape_number Number of generic shapes

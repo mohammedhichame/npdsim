@@ -11,7 +11,7 @@ demand_sim(
   shape_type = "random",
   level_number,
   level_range = 1000:10000,
-  noise_cv
+  noise_cv = 0.05
 )
 }
 \arguments{
@@ -31,7 +31,7 @@ The type "random" picks one the other types randomly for each product.}
 \item{noise_cv}{The coefficient of variation of the noise added to the simulated sales}
 }
 \value{
-A date frame of three colunms product_id, shape and assigned_shape,
+A date frame that contains the following columns: product_id, shape and assigned_shape,
          level and assigned_level, demand_wn (demand without noise, not rounded),
          noise and demand. demand is the rounded value of the Max
          between (demand_wn+noise) and 0
