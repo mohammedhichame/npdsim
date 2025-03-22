@@ -32,12 +32,17 @@ The type "random" picks one the other types randomly for each product.}
 }
 \value{
 A date frame of three colunms product_id, shape and assigned_shape,
-         level and assigned_level, sale, noise and modified_sale - Max between sale+noise and 0
+         level and assigned_level, demand_wn (demand without noise, not rounded),
+         noise and demand. demand is the rounded value of the Max
+         between (demand_wn+noise) and 0
 }
 \description{
 Simulate the demand for new products during their life cycle by specifying their life cycle shape
 }
 \examples{
-demand_sim(products_number=100,periods_number=20,shape_number=5,level_number=20,
+demand_sim(products_number=100,periods_number=20,shape_number=5, level_number=20,
+level_range=1000:10000,noise_cv=0.05)
+
+demand_sim(products_number=100,periods_number=20,shape_number=5, shape_type="bass", level_number=20,
 level_range=1000:10000,noise_cv=0.05)
 }
