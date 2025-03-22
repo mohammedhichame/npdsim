@@ -1,13 +1,14 @@
 Package: npdsim
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Forecast the Demand for New Products
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: person("Mohammed Hichame", "BENBITOUR", email = "res.mhichame@gmail.com",
+  role = c("aut", "cre"))
+Description: Simulate the demand for ready to launch new products during their life
+    life cycle, or during their introduction and growth phases.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/mohammedhichame/npdsim
 BugReports: https://github.com/mohammedhichame/npdsim/issues
+RoxygenNote: 7.3.2
