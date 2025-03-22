@@ -22,8 +22,7 @@
 #' @import dplyr
 #'
 #' @examples
-#' demand_sim(products_number=100,periods_number=20,shape_number=5, level_number=20,
-#' level_range=1000:10000,noise_cv=0.05)
+#' demand_sim(products_number=100,periods_number=20,shape_number=5, level_number=20)
 #'
 #' demand_sim(products_number=100,periods_number=20,shape_number=5, shape_type="bass", level_number=20,
 #' level_range=1000:10000,noise_cv=0.05)
