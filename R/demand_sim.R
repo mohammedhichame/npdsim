@@ -10,7 +10,9 @@
 #' @param noise_cv The coefficient of variation of the noise added to the simulated sales
 #'
 #' @return A date frame of three colunms product_id, shape and assigned_shape,
-#'          level and assigned_level, sale, noise and modified_sale - Max between sale+noise and 0
+#'          level and assigned_level, demand_wn (demand without noise, not rounded),
+#'          noise and demand. demand is the rounded value of the Max
+#'          between (demand_wn+noise) and 0
 #' @export
 #'
 #' @import dplyr
@@ -59,7 +61,7 @@ demand_sim <- function(products_number,periods_number,shape_number, shape_type="
 
   product_sales <- dplyr::left_join(product_sales, shapes_table)
 
-  product_sales <- dplyr::mutate(product_sales, sale=shape*level)
+  product_sales <- dplyr::mutate(product_sales, demand_wn=shape*level)
 
   # add noise
 
@@ -67,16 +69,20 @@ demand_sim <- function(products_number,periods_number,shape_number, shape_type="
 
   for (i in 1:length(product_sales$product_id)){
 
-  product_sales$noise[i] <- stats::rnorm(1, mean=0, sd=noise_cv*product_sales$sale[i])
+  product_sales$noise[i] <- stats::rnorm(1, mean=0, sd=noise_cv*product_sales$demand_wn[i])
 
   }
 
   # sale_modified=sale+noise
 
-  product_sales$sale_modified <- product_sales$sale + product_sales$noise
+  product_sales$demand <- product_sales$sale + product_sales$noise
 
   # if sale+noise is negative, assign 0
-  product_sales$sale_modified[product_sales$sale_modified<0] <- 0
+  product_sales$demand[product_sales$demand<0] <- 0
+
+  # round sale_modified (demand has to be an integer)
+
+  product_sales$demand <- round(product_sales$demand)
 
 
   product_sales
