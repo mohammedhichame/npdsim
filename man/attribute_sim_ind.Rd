@@ -2,8 +2,7 @@
 % Please edit documentation in R/attribute_sim_ind.R
 \name{attribute_sim_ind}
 \alias{attribute_sim_ind}
-\title{Simulate the attributes for each product with the assumption
-that the attributes of shapes are independent of the attributes of levels}
+\title{Simulate the Attributes with the Assumption of Independent Attributes}
 \usage{
 attribute_sim_ind(
   product_shapes_and_levels,
@@ -27,6 +26,8 @@ A numeric dateframe of three colunms: product_id, assigned_shape and assigned_le
 \description{
 Simulate the attributes for each product with the assumption
 that the attributes of shapes are independent of the attributes of levels
+We mean by independecy the fact that each attribute is related to one of
+the following: shape, level or nothing
 }
 \examples{
 attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:3,assigned_shape=c(1,1,2), assigned_level=c(5,3,1)),

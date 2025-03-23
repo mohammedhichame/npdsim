@@ -1,5 +1,10 @@
+#' Simulate the Attributes with the Assumption of Independent Attributes
+#'
+#' @description
 #' Simulate the attributes for each product with the assumption
 #' that the attributes of shapes are independent of the attributes of levels
+#' We mean by independecy the fact that each attribute is related to one of
+#' the following: shape, level or nothing
 #'
 #' @param product_shapes_and_levels A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level
 #' @param attributes_number The number of attributes
