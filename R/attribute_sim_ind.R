@@ -24,7 +24,7 @@ attribute_sim_ind <- function(product_shapes_and_levels,attributes_number,
 
   stopifnot("level_attributes_number must be a numeric"=is.numeric(level_attributes_number))
 
-  stopifnot("level_attributes_number must be a numeric"=((shape_attributes_number+level_attributes_number)<=attributes_number))
+  stopifnot("shape_attributes_number+level_attributes_number has to be less than or equal to attributes_number"=((shape_attributes_number+level_attributes_number)<=attributes_number))
 
 
 shape_set <- unique(product_shapes_and_levels$assigned_shape)
