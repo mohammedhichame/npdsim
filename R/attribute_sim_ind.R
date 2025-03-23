@@ -1,4 +1,4 @@
-#' Simulate the attributes for each shape and each level with the assumption
+#' Simulate the attributes for each product with the assumption
 #' that the attributes of shapes are independent of the attributes of levels
 #'
 #' @param product_shapes_and_levels A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level
