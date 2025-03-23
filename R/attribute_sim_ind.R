@@ -1,5 +1,30 @@
-attribute_sim <- function(product_shapes_and_levels,attributes_number,
+#' Simulate the attributes for each shape and each level with the assumption
+#' that the attributes of shapes are independent of the attributes of levels
+#'
+#' @param product_shapes_and_levels A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level
+#' @param attributes_number The number of attributes
+#' @param shape_attributes_number The number of attributes assigned to shape
+#' @param level_attributes_number The number of attributes assigned to level
+#'
+#' @return A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level and attributes
+#' @export
+#'
+#' @examples
+#' attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:3,assigned_shape=c(1,1,2), assigned_level=c(5,3,1)),
+#' attributes_number=15,
+#' shape_attributes_number=7,
+#' level_attributes_number=4)
+#'
+attribute_sim_ind <- function(product_shapes_and_levels,attributes_number,
                           shape_attributes_number, level_attributes_number) {
+
+  stopifnot("attributes_number must be a numeric"=is.numeric(attributes_number))
+
+  stopifnot("shape_attributes_number must be a numeric"=is.numeric(shape_attributes_number))
+
+  stopifnot("level_attributes_number must be a numeric"=is.numeric(level_attributes_number))
+
+  stopifnot("level_attributes_number must be a numeric"=((shape_attributes_number+level_attributes_number)<=attributes_number))
 
 
 shape_set <- unique(product_shapes_and_levels$assigned_shape)
@@ -80,5 +105,7 @@ attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
                                                 attributes_per_level)
 
 attribute_shapes_and_levels
+
+dplyr::left_join(product_shapes_and_levels, attribute_shapes_and_levels)
 
 }
