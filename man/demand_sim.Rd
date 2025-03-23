@@ -2,7 +2,7 @@
 % Please edit documentation in R/demand_sim.R
 \name{demand_sim}
 \alias{demand_sim}
-\title{Simulate the demand for new products during their life cycle by specifying their life cycle shape}
+\title{Simulate the demand for new products}
 \usage{
 demand_sim(
   products_number,
@@ -41,7 +41,8 @@ A date frame that contains the following columns: product_id, shape and assigned
          between (demand_wn+noise) and 0
 }
 \description{
-Simulate the demand for new products during their life cycle by specifying their life cycle shape
+Simulate the demand for new products during their life cycle by
+specifying their life cycle type of shape
 }
 \examples{
 demand_sim(products_number=100,periods_number=20,shape_number=5, level_number=20)

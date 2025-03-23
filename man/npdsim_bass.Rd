@@ -2,7 +2,7 @@
 % Please edit documentation in R/npdsim_bass.R
 \name{npdsim_bass}
 \alias{npdsim_bass}
-\title{Calculate the Bass probability density function of purchase f(t)}
+\title{Calculate the Bass probability}
 \usage{
 npdsim_bass(p_param, q_param, t)
 }

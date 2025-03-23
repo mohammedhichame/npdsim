@@ -2,7 +2,7 @@
 % Please edit documentation in R/shape_sim_trapezoid.R
 \name{shape_sim_trapezoid}
 \alias{shape_sim_trapezoid}
-\title{Generate trapezoidal shapes for the demand of new products during their life cycle}
+\title{Generate trapezoidal shapes}
 \usage{
 shape_sim_trapezoid(periods_number, shape_number)
 }

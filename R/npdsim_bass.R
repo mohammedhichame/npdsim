@@ -1,3 +1,6 @@
+#' Calculate the Bass probability
+#'
+#' @description
 #' Calculate the Bass probability density function of purchase f(t)
 #'
 #' @param p_param Coefficient of innovation

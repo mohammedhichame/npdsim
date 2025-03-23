@@ -2,7 +2,7 @@
 % Please edit documentation in R/shape_sim_random.R
 \name{shape_sim_random}
 \alias{shape_sim_random}
-\title{Generate random (Bass, Trapezoidal or Triangular) shapes for the demand of new products during their life cycle}
+\title{Generate random (Bass, Trapezoidal or Triangular) shapes}
 \usage{
 shape_sim_random(periods_number, shape_number)
 }
@@ -15,7 +15,8 @@ shape_sim_random(periods_number, shape_number)
 A numeric dateframe of three colunms: time, shape and assigned_shape
 }
 \description{
-Generate random (Bass, Trapezoidal or Triangular) shapes for the demand of new products during their life cycle
+Generate random (Bass, Trapezoidal or Triangular) shapes for the demand of
+new products during their life cycle
 }
 \examples{
 shape_sim_random(periods_number=20, shape_number=5)

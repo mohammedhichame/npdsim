@@ -1,3 +1,6 @@
+#' Generate generic shapes for the introduction and growth phases
+#'
+#' @description
 #' Generate piece-wise linear (4 segments) generic shapes for the introduction and growth phases
 #'
 #' @param periods_number Number of periods of the introduction and growth phases

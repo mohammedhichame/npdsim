@@ -1,3 +1,6 @@
+#' Generate trapezoidal shapes
+#'
+#' @description
 #' Generate trapezoidal shapes for the demand of new products during their life cycle
 #'
 #' @param periods_number Number of time periods of the products life cycle

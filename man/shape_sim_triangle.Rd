@@ -2,7 +2,7 @@
 % Please edit documentation in R/shape_sim_triangle.R
 \name{shape_sim_triangle}
 \alias{shape_sim_triangle}
-\title{Generate triangular shapes for the demand of new products during their life cycle}
+\title{Generate triangular shapes}
 \usage{
 shape_sim_triangle(periods_number, shape_number)
 }
@@ -15,7 +15,8 @@ shape_sim_triangle(periods_number, shape_number)
 A numeric dateframe of three colunms: time, shape and assigned_shape
 }
 \description{
-Generate triangular shapes for the demand of new products during their life cycle
+Generate triangular shapes for the demand of new products
+during their life cycle
 }
 \examples{
 shape_sim_triangle(periods_number=20, shape_number=5)

@@ -1,4 +1,8 @@
-#' Generate random (Bass, Trapezoidal or Triangular) shapes for the demand of new products during their life cycle
+#' Generate random (Bass, Trapezoidal or Triangular) shapes
+#'
+#' @description
+#' Generate random (Bass, Trapezoidal or Triangular) shapes for the demand of
+#' new products during their life cycle
 #'
 #' @param periods_number Number of time periods of the products life cycle
 #' @param shape_number Number of generic shapes

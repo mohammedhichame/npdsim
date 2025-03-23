@@ -2,7 +2,7 @@
 % Please edit documentation in R/shape_sim_ig.R
 \name{piecewise_shape_sim}
 \alias{piecewise_shape_sim}
-\title{Generate piece-wise linear (4 segments) generic shapes for the introduction and growth phases}
+\title{Generate generic shapes for the introduction and growth phases}
 \usage{
 piecewise_shape_sim(periods_number, shape_number)
 }

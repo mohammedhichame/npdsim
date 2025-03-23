@@ -2,7 +2,7 @@
 % Please edit documentation in R/shape_sim_bass.R
 \name{shape_sim_bass}
 \alias{shape_sim_bass}
-\title{Generate generic Bass shapes for the demand of new products during their life cycle}
+\title{Generate generic Bass shapes}
 \usage{
 shape_sim_bass(periods_number, shape_number)
 }
