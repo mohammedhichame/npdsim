@@ -31,7 +31,9 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   stopifnot("level_attributes_number must be a numeric"=is.numeric(level_attributes_number))
 
-  stopifnot("shape_attributes_number+level_attributes_number has to be less than or equal to attributes_number"=((shape_attributes_number+level_attributes_number)<=attributes_number))
+  stopifnot("shape_attributes_number must be less than or equal to attributes_number"=(shape_attributes_number<=attributes_number))
+
+  stopifnot("level_attributes_number must be less than or equal to attributes_number"=(level_attributes_number<=attributes_number))
 
   stopifnot("attributes_number has to be greater than 0"=(attributes_number>0))
 
