@@ -109,18 +109,23 @@ unassigned_attribute_shapes_and_levels <- tidyr::pivot_wider(data = unassigned_a
 # assign to all the attributes
 
 attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
-                                                unassigned_attribute_shapes_and_levels)
+                                                unassigned_attribute_shapes_and_levels,
+                                                by = join_by(assigned_shape, assigned_level))
 
 attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
-                                                attributes_per_shape)
+                                                attributes_per_shape,
+                                                by = join_by(assigned_shape))
 
 attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
-                                                attributes_per_level)
+                                                attributes_per_level,
+                                                by = join_by(assigned_level))
 
 
 # assign the attributes to products
 
-dplyr::left_join(product_shapes_and_levels, attribute_shapes_and_levels)
+dplyr::left_join(product_shapes_and_levels,
+                 attribute_shapes_and_levels,
+                 by = join_by(assigned_shape, assigned_level))
 
 
 }
