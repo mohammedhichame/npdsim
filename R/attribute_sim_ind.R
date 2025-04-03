@@ -102,7 +102,7 @@ product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
                                               by = join_by(assigned_shape, assigned_level))
 
 
-# assign to it the unassigned attributes
+# assign the unassigned attributes
 
 unassigned_attributes_name <- (1:attributes_number)[-c(shape_attributes_name,level_attributes_name)]
 
