@@ -10,5 +10,3 @@ test_that("example works", {
   expect_type(abc$assigned_shape, "double")
   expect_type(abc$assigned_level, "double")
 })
-
-
