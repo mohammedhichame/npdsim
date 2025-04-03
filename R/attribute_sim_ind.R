@@ -57,7 +57,7 @@ level_attributes_name <- sample(x = (1:attributes_number)[-shape_attributes_name
 
 attributes_per_shape <- data.frame(assigned_shape=rep(shape_set,each=shape_attributes_number),
                                    attribute=rep(shape_attributes_name, times=length(shape_set)),
-                                   value=runif(n=shape_attributes_number*length(shape_set), min = 0, max = 1))
+                                   value=stats::runif(n=shape_attributes_number*length(shape_set), min = 0, max = 1))
 
 
 attributes_per_shape <- tidyr::pivot_wider(data = attributes_per_shape,
@@ -69,7 +69,7 @@ attributes_per_shape <- tidyr::pivot_wider(data = attributes_per_shape,
 
 attributes_per_level <- data.frame(assigned_level=rep(level_set,each=level_attributes_number),
                                    attribute=rep(level_attributes_name, times=length(level_set)),
-                                   value=runif(n=level_attributes_number*length(level_set), min = 0, max = 1))
+                                   value=stats::runif(n=level_attributes_number*length(level_set), min = 0, max = 1))
 
 
 attributes_per_level <- tidyr::pivot_wider(data = attributes_per_level,
@@ -113,7 +113,7 @@ unassigned_attribute_product <- data.frame(product_id=rep(product_shapes_and_lev
 unassigned_attribute_product$attribute <- rep(unassigned_attributes_name,
                                                         each=length(product_shapes_and_levels$product_id))
 
-unassigned_attribute_product$value <- runif(n=length(unassigned_attribute_product$attribute),
+unassigned_attribute_product$value <- stats::runif(n=length(unassigned_attribute_product$attribute),
                                                       min = 0,
                                                       max = 1)
 
@@ -134,7 +134,7 @@ product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
 
 for (i in 1:(attributes_number-length(unassigned_attributes_name))) {
 
-  product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  runif(n=length(product_shapes_and_levels$product_id),
+  product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  stats::runif(n=length(product_shapes_and_levels$product_id),
                                                                              min = -0.05,
                                                                              max = 0.05)
 }
