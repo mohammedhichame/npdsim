@@ -21,3 +21,12 @@ test_that("second example works", {
   expect_type(abc$shape, "double")
   expect_type(abc$assigned_shape, "integer")
 })
+
+
+test_that("detection of shape type works", {
+
+  expect_error(shape_sim(periods_number=20,
+                         shape_number=5,
+                         shape_type="intro"))
+
+})

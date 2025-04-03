@@ -21,6 +21,10 @@
 #' shape_sim(periods_number=20, shape_number=5,shape_type="trapezoid")
 shape_sim <- function(periods_number,shape_number,shape_type="random") {
 
+  stopifnot("periods_number must be a numeric"=is.numeric(periods_number))
+  stopifnot("shape_number must be a numeric"=is.numeric(shape_number))
+  stopifnot("shape_type must take one of the folllwing shapes: triangle, trapezoid, bass, random and intro & growth "=shape_type %in% c("triangle", "trapezoid", "bass", "random", "intro & growth"))
+
 
   if (shape_type=="triangle") {
 
