@@ -8,12 +8,12 @@
 #' to shape and level.
 #'
 #'
-#' @param product_shapes_and_levels A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level
+#' @param product_shapes_and_levels A numeric dateframe of three columns: product_id, assigned_shape and assigned_level
 #' @param attributes_number The number of attributes
 #' @param shape_attributes_number The number of attributes assigned to shape
 #' @param level_attributes_number The number of attributes assigned to level
 #'
-#' @return A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level and attributes (as columns)
+#' @return A numeric dateframe of three columns: product_id, assigned_shape and assigned_level and attributes (as columns)
 #' @export
 #'
 #' @examples
@@ -132,31 +132,31 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   # assign to it the unassigned attributes
 
-  a1 <- (1:attributes_number) %in% shape_attributes_name
-
-  a2 <- (1:attributes_number) %in% level_attributes_name
-
-  unassigned_attributes_name <- (1:attributes_number)[!(a1 | a2)]
-
-  unassigned_attribute_shapes_and_levels <- data.frame(assigned_shape=rep(attribute_shapes_and_levels$assigned_shape,
-                                                                          times=length(unassigned_attributes_name)))
-
-  unassigned_attribute_shapes_and_levels$assigned_level <- rep(attribute_shapes_and_levels$assigned_level,
-                                                               times=length(unassigned_attributes_name))
-
-  unassigned_attribute_shapes_and_levels$attribute <- rep(unassigned_attributes_name,
-                                                          each=length(shape_set)*length(level_set))
-
-  unassigned_attribute_shapes_and_levels$value <-  runif(n=length(unassigned_attribute_shapes_and_levels$attribute),
-                                                          min = 0,
-                                                          max = 1)
-
-
-  unassigned_attribute_shapes_and_levels <- tidyr::pivot_wider(data = unassigned_attribute_shapes_and_levels,
-                                                               names_from = attribute,
-                                                               names_prefix = "attribute",
-                                                               values_from = value)
-
+  # a1 <- (1:attributes_number) %in% shape_attributes_name
+  #
+  # a2 <- (1:attributes_number) %in% level_attributes_name
+  #
+  # unassigned_attributes_name <- (1:attributes_number)[!(a1 | a2)]
+  #
+  # unassigned_attribute_shapes_and_levels <- data.frame(assigned_shape=rep(attribute_shapes_and_levels$assigned_shape,
+  #                                                                         times=length(unassigned_attributes_name)))
+  #
+  # unassigned_attribute_shapes_and_levels$assigned_level <- rep(attribute_shapes_and_levels$assigned_level,
+  #                                                              times=length(unassigned_attributes_name))
+  #
+  # unassigned_attribute_shapes_and_levels$attribute <- rep(unassigned_attributes_name,
+  #                                                         each=length(shape_set)*length(level_set))
+  #
+  # unassigned_attribute_shapes_and_levels$value <-  runif(n=length(unassigned_attribute_shapes_and_levels$attribute),
+  #                                                         min = 0,
+  #                                                         max = 1)
+  #
+  #
+  # unassigned_attribute_shapes_and_levels <- tidyr::pivot_wider(data = unassigned_attribute_shapes_and_levels,
+  #                                                              names_from = attribute,
+  #                                                              names_prefix = "attribute",
+  #                                                              values_from = value)
+  #
 
   # assign to all the attributes
 
@@ -164,9 +164,9 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
                                                   common_attribute_shapes_and_levels,
                                                   by = join_by(assigned_shape, assigned_level))
 
-  attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
-                                                  unassigned_attribute_shapes_and_levels,
-                                                  by = join_by(assigned_shape, assigned_level))
+  # attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
+  #                                                 unassigned_attribute_shapes_and_levels,
+  #                                                 by = join_by(assigned_shape, assigned_level))
 
   attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
                                                   only_attributes_per_shape,
@@ -182,9 +182,42 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
                                                 attribute_shapes_and_levels,
                                                 by = join_by(assigned_shape, assigned_level))
 
-  # add some noise
 
-  for (i in 1:attributes_number) {
+  # assign the unassigned attributes
+
+
+  a1 <- (1:attributes_number) %in% shape_attributes_name
+
+  a2 <- (1:attributes_number) %in% level_attributes_name
+
+  unassigned_attributes_name <- (1:attributes_number)[!(a1 | a2)]
+
+  unassigned_attribute_product <- data.frame(product_id=rep(product_shapes_and_levels$product_id,
+                                                            times=length(unassigned_attributes_name)))
+
+  unassigned_attribute_product$attribute <- rep(unassigned_attributes_name,
+                                                each=length(product_shapes_and_levels$product_id))
+
+  unassigned_attribute_product$value <- runif(n=length(unassigned_attribute_product$attribute),
+                                              min = 0,
+                                              max = 1)
+
+
+  unassigned_attribute_product <- tidyr::pivot_wider(data = unassigned_attribute_product,
+                                                     names_from = attribute,
+                                                     names_prefix = "attribute",
+                                                     values_from = value)
+
+  # join the unassigned attributes with each product
+
+  product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
+                                                unassigned_attribute_product,
+                                                by = join_by(product_id))
+
+
+  # add some noise only to the assigned attributes (noise per product)
+
+  for (i in 1:(attributes_number-length(unassigned_attributes_name))) {
 
     product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  runif(n=length(product_shapes_and_levels$product_id),
                                                                                min = -0.05,
