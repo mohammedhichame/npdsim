@@ -38,6 +38,7 @@ demand_sim <- function(products_number,periods_number,shape_number, shape_type="
   stopifnot("products_number must be a numeric"=is.numeric(products_number))
   stopifnot("periods_number must be a numeric"=is.numeric(periods_number))
   stopifnot("shape_number must be a numeric"=is.numeric(shape_number))
+  stopifnot("shape_type must take one of the folllwing shapes: triangle, trapezoid, bass, random and intro & growth "=shape_type %in% c("triangle", "trapezoid", "bass", "random", "intro & growth"))
   stopifnot("level_number must be a numeric"=is.numeric(level_number))
   stopifnot("level_range must be a numeric vector"=is.numeric(level_range))
   stopifnot("noise_cv must be a numeric"=is.numeric(noise_cv))
@@ -98,8 +99,6 @@ demand_sim <- function(products_number,periods_number,shape_number, shape_type="
 
   product_sales$demand <- round(product_sales$demand)
 
-
   product_sales
 
 }
-
