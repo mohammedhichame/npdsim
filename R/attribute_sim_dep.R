@@ -5,7 +5,7 @@
 #' that some of the attributes related to shapes are also related to some
 #' of the attributes of levels.
 #' We mean by dependence the fact that some attributes are related at the same time
-#' to shape and level
+#' to shape and level.
 #'
 #'
 #' @param product_shapes_and_levels A numeric dateframe of three colunms: product_id, assigned_shape and assigned_level
@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' attribute_sim_dep(product_shapes_and_levels=data.frame(product_id=1:3,assigned_shape=c(1,1,2), assigned_level=c(5,3,1)),
+#' attribute_sim_dep(product_shapes_and_levels=data.frame(product_id=1:4,assigned_shape=c(1,1,2,2), assigned_level=c(5,3,3,3)),
 #' attributes_number=15,
 #' shape_attributes_number=7,
 #' level_attributes_number=4)
@@ -52,7 +52,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
                                   size = shape_attributes_number,
                                   replace = FALSE)
 
-  # which attributes are related to level (different than the attribuates related to shape)
+  # which attributes are related to level (different than the attributes related to shape)
 
   level_attributes_name <- sample(x = 1:attributes_number,
                                   size = level_attributes_number,
@@ -68,7 +68,8 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   only_attributes_per_shape <- data.frame(assigned_shape=rep(shape_set,each=length(only_shape_attributes_name)),
                                           attribute=rep(only_shape_attributes_name, times=length(shape_set)),
-                                          value=sample(x = 1:20,size = length(only_shape_attributes_name)*length(shape_set),replace = TRUE))
+                                          value=runif(n=length(only_shape_attributes_name)*length(shape_set), min = 0, max = 1))
+
 
   only_attributes_per_shape <- tidyr::pivot_wider(data = only_attributes_per_shape,
                                                   names_from = attribute,
@@ -87,7 +88,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   only_attributes_per_level <- data.frame(assigned_level=rep(level_set,each=length(only_level_attributes_name)),
                                           attribute=rep(only_level_attributes_name, times=length(level_set)),
-                                          value=sample(x = 1:20,size = length(only_level_attributes_name)*length(level_set),replace = TRUE))
+                                          value=runif(n=length(only_level_attributes_name)*length(level_set), min = 0, max = 1))
 
   only_attributes_per_level <- tidyr::pivot_wider(data = only_attributes_per_level,
                                                   names_from = attribute,
@@ -118,9 +119,9 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
   common_attribute_shapes_and_levels$attribute <- rep(common_attributes_name,
                                                       each=length(shape_set)*length(level_set))
 
-  common_attribute_shapes_and_levels$value <- sample(x = 1:20,
-                                                     size = length(common_attribute_shapes_and_levels$attribute),
-                                                     replace = TRUE)
+  common_attribute_shapes_and_levels$value <- runif(n=length(common_attribute_shapes_and_levels$attribute),
+                                                      min = 0,
+                                                      max = 1)
 
 
   common_attribute_shapes_and_levels <- tidyr::pivot_wider(data = common_attribute_shapes_and_levels,
@@ -146,9 +147,9 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
   unassigned_attribute_shapes_and_levels$attribute <- rep(unassigned_attributes_name,
                                                           each=length(shape_set)*length(level_set))
 
-  unassigned_attribute_shapes_and_levels$value <- sample(x = 1:20,
-                                                         size = length(unassigned_attribute_shapes_and_levels$attribute),
-                                                         replace = TRUE)
+  unassigned_attribute_shapes_and_levels$value <-  runif(n=length(unassigned_attribute_shapes_and_levels$attribute),
+                                                          min = 0,
+                                                          max = 1)
 
 
   unassigned_attribute_shapes_and_levels <- tidyr::pivot_wider(data = unassigned_attribute_shapes_and_levels,
@@ -177,8 +178,20 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   # assign the attributes to products
 
-  dplyr::left_join(product_shapes_and_levels,
-                   attribute_shapes_and_levels,
-                   by = join_by(assigned_shape, assigned_level))
+  product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
+                                                attribute_shapes_and_levels,
+                                                by = join_by(assigned_shape, assigned_level))
+
+  # add some noise
+
+  for (i in 1:attributes_number) {
+
+    product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  runif(n=length(product_shapes_and_levels$product_id),
+                                                                               min = -0.05,
+                                                                               max = 0.05)
+  }
+
+  product_shapes_and_levels
+
 
 }
