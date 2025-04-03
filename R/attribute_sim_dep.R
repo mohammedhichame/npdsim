@@ -68,7 +68,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   only_attributes_per_shape <- data.frame(assigned_shape=rep(shape_set,each=length(only_shape_attributes_name)),
                                           attribute=rep(only_shape_attributes_name, times=length(shape_set)),
-                                          value=runif(n=length(only_shape_attributes_name)*length(shape_set), min = 0, max = 1))
+                                          value=stats::runif(n=length(only_shape_attributes_name)*length(shape_set), min = 0, max = 1))
 
 
   only_attributes_per_shape <- tidyr::pivot_wider(data = only_attributes_per_shape,
@@ -88,7 +88,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   only_attributes_per_level <- data.frame(assigned_level=rep(level_set,each=length(only_level_attributes_name)),
                                           attribute=rep(only_level_attributes_name, times=length(level_set)),
-                                          value=runif(n=length(only_level_attributes_name)*length(level_set), min = 0, max = 1))
+                                          value=stats::runif(n=length(only_level_attributes_name)*length(level_set), min = 0, max = 1))
 
   only_attributes_per_level <- tidyr::pivot_wider(data = only_attributes_per_level,
                                                   names_from = attribute,
@@ -119,7 +119,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
   common_attribute_shapes_and_levels$attribute <- rep(common_attributes_name,
                                                       each=length(shape_set)*length(level_set))
 
-  common_attribute_shapes_and_levels$value <- runif(n=length(common_attribute_shapes_and_levels$attribute),
+  common_attribute_shapes_and_levels$value <- stats::runif(n=length(common_attribute_shapes_and_levels$attribute),
                                                       min = 0,
                                                       max = 1)
 
@@ -166,7 +166,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
   unassigned_attribute_product$attribute <- rep(unassigned_attributes_name,
                                                 each=length(product_shapes_and_levels$product_id))
 
-  unassigned_attribute_product$value <- runif(n=length(unassigned_attribute_product$attribute),
+  unassigned_attribute_product$value <- stats::runif(n=length(unassigned_attribute_product$attribute),
                                               min = 0,
                                               max = 1)
 
@@ -187,7 +187,7 @@ attribute_sim_dep <- function(product_shapes_and_levels,attributes_number,
 
   for (i in 1:(attributes_number-length(unassigned_attributes_name))) {
 
-    product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  runif(n=length(product_shapes_and_levels$product_id),
+    product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  stats::runif(n=length(product_shapes_and_levels$product_id),
                                                                                min = -0.05,
                                                                                max = 0.05)
   }
