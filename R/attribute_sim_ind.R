@@ -15,7 +15,9 @@
 #' @export
 #'
 #' @examples
-#' attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:4,assigned_shape=c(1,1,2,2), assigned_level=c(5,3,3,3)),
+#' attribute_sim_ind(product_shapes_and_levels=
+#' data.frame(product_id=1:4,assigned_shape=c(1,1,2,2),
+#' assigned_level=c(5,3,3,3)),
 #' attributes_number=15,
 #' shape_attributes_number=7,
 #' level_attributes_number=4)

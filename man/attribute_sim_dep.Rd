@@ -31,7 +31,9 @@ We mean by dependence the fact that some attributes are related at the same time
 to shape and level.
 }
 \examples{
-attribute_sim_dep(product_shapes_and_levels=data.frame(product_id=1:4,assigned_shape=c(1,1,2,2), assigned_level=c(5,3,3,3)),
+attribute_sim_dep(product_shapes_and_levels=
+data.frame(product_id=1:4,assigned_shape=c(1,1,2,2),
+assigned_level=c(5,3,3,3)),
 attributes_number=15,
 shape_attributes_number=7,
 level_attributes_number=4)
