@@ -65,12 +65,16 @@ demand_sim <- function(products_number,periods_number,shape_number, shape_type="
   product_sales <- data.frame(product_id=rep(1:products_number, each=periods_number),
                           time=rep(1:periods_number, times=products_number))
 
-  product_sales <- dplyr::left_join(product_sales, product_shapes_and_levels)
+  product_sales <- dplyr::left_join(product_sales, product_shapes_and_levels,
+                                    by = join_by(product_id))
 
-  product_sales <- dplyr::left_join(product_sales, level_table)
+  product_sales <- dplyr::left_join(product_sales, level_table,
+                                    by = join_by(assigned_level))
 
-  product_sales <- dplyr::left_join(product_sales, shapes_table)
+  product_sales <- dplyr::left_join(product_sales, shapes_table,
+                                    by = join_by(time, assigned_shape))
 
+  # demand without noise = shape x level
   product_sales <- dplyr::mutate(product_sales, demand_wn=shape*level)
 
   # add noise
