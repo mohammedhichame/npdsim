@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-#' attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:3,assigned_shape=c(1,1,2), assigned_level=c(5,3,3)),
+#' attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:4,assigned_shape=c(1,1,2,2), assigned_level=c(5,3,3,3)),
 #' attributes_number=15,
 #' shape_attributes_number=7,
 #' level_attributes_number=4)
@@ -55,9 +55,6 @@ level_attributes_name <- sample(x = (1:attributes_number)[-shape_attributes_name
                                 replace = FALSE)
 
 # attributes values per shape
-# attributes_per_shape <- data.frame(assigned_shape=rep(shape_set,each=shape_attributes_number),
-#                                    attribute=rep(shape_attributes_name, times=length(shape_set)),
-#                                    value=sample(x = 1:20,size = shape_attributes_number*length(shape_set),replace = TRUE))
 
 attributes_per_shape <- data.frame(assigned_shape=rep(shape_set,each=shape_attributes_number),
                                    attribute=rep(shape_attributes_name, times=length(shape_set)),
@@ -71,13 +68,11 @@ attributes_per_shape <- tidyr::pivot_wider(data = attributes_per_shape,
 
 
 # attributes values per level
-# attributes_per_level <- data.frame(assigned_level=rep(level_set,each=level_attributes_number),
-#                                    attribute=rep(level_attributes_name, times=length(level_set)),
-#                                    value=sample(x = 1:20,size = level_attributes_number*length(level_set),replace = TRUE))
 
 attributes_per_level <- data.frame(assigned_level=rep(level_set,each=level_attributes_number),
                                    attribute=rep(level_attributes_name, times=length(level_set)),
                                    value=runif(n=level_attributes_number*length(level_set), min = 0, max = 1))
+
 
 attributes_per_level <- tidyr::pivot_wider(data = attributes_per_level,
                                            names_from = attribute,
@@ -104,10 +99,6 @@ unassigned_attribute_shapes_and_levels$assigned_level <- rep(attribute_shapes_an
 
 unassigned_attribute_shapes_and_levels$attribute <- rep(unassigned_attributes_name,
                                                         each=length(shape_set)*length(level_set))
-
-# unassigned_attribute_shapes_and_levels$value <- sample(x = 1:20,
-#                                                        size = length(unassigned_attribute_shapes_and_levels$attribute),
-#                                                        replace = TRUE)
 
 unassigned_attribute_shapes_and_levels$value <- runif(n=length(unassigned_attribute_shapes_and_levels$attribute),
                                                       min = 0,
@@ -137,9 +128,18 @@ attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
 
 # assign the attributes to products
 
-dplyr::left_join(product_shapes_and_levels,
-                 attribute_shapes_and_levels,
-                 by = join_by(assigned_shape, assigned_level))
+product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
+                                              attribute_shapes_and_levels,
+                                              by = join_by(assigned_shape, assigned_level))
 
+# add some noise
+
+for (i in 1:attributes_number) {
+
+  product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+rnorm(n=length(product_shapes_and_levels$product_id), mean=0, sd=0.1)
+
+}
+
+product_shapes_and_levels
 
 }
