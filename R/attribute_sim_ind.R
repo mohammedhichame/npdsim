@@ -136,8 +136,9 @@ product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
 
 for (i in 1:attributes_number) {
 
-  product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+rnorm(n=length(product_shapes_and_levels$product_id), mean=0, sd=0.1)
-
+  product_shapes_and_levels[,i+3] <- product_shapes_and_levels[,i+3]+  runif(n=length(product_shapes_and_levels$product_id),
+                                                                             min = -0.05,
+                                                                             max = 0.05)
 }
 
 product_shapes_and_levels
