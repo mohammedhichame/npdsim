@@ -39,7 +39,6 @@ stopifnot("shape_attributes_number has to be greater than 0"=(shape_attributes_n
 stopifnot("level_attributes_number has to be greater than 0"=(level_attributes_number>0))
 
 
-
 shape_set <- unique(product_shapes_and_levels$assigned_shape)
 
 level_set <- unique(product_shapes_and_levels$assigned_level)
@@ -66,7 +65,6 @@ attributes_per_shape <- tidyr::pivot_wider(data = attributes_per_shape,
                                            names_prefix = "attribute",
                                            values_from = value)
 
-
 # attributes values per level
 
 attributes_per_level <- data.frame(assigned_level=rep(level_set,each=level_attributes_number),
@@ -78,7 +76,6 @@ attributes_per_level <- tidyr::pivot_wider(data = attributes_per_level,
                                            names_from = attribute,
                                            names_prefix = "attribute",
                                            values_from = value)
-
 
 # create the output: attribute per each combination of shape and level
 
@@ -103,7 +100,6 @@ attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
 product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
                                               attribute_shapes_and_levels,
                                               by = join_by(assigned_shape, assigned_level))
-
 
 
 # assign to it the unassigned attributes
