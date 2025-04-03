@@ -30,7 +30,7 @@ We mean by independence the fact that each attribute is related to one of
 the following: shape, level or nothing.
 }
 \examples{
-attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:3,assigned_shape=c(1,1,2), assigned_level=c(5,3,1)),
+attribute_sim_ind(product_shapes_and_levels=data.frame(product_id=1:3,assigned_shape=c(1,1,2), assigned_level=c(5,3,3)),
 attributes_number=15,
 shape_attributes_number=7,
 level_attributes_number=4)
