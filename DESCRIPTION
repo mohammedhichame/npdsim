@@ -1,11 +1,17 @@
 Package: npdsim
 Type: Package
-Title: Forecast the Demand for New Products
+Title: Simulate Demand and Attributes for New Products
 Version: 0.1.0
 Authors@R: person("Mohammed Hichame", "BENBITOUR", email = "res.mhichame@gmail.com",
   role = c("aut", "cre"))
-Description: Simulate the demand for ready to launch new products during their life
-    life cycle, or during their introduction and growth phases.
+Description: Simulate demand and attributes for ready to launch new products 
+    during their life cycle, or during their introduction and growth phases.
+    You provide the number of products, attributes, time periods and/or other parameters 
+    and 'npdsim' can simulate for you the demand for each product during the considered 
+    time periods, and the attributes of each product. The simulation for the demand
+    is based on the idea that each product has a shape and a level, where the level
+    is the cumulative demand over the considered time periods, and the shape is
+    the normalized demand across those time periods.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
