@@ -16,6 +16,9 @@
 #' @return A numeric dateframe of three columns: product_id, assigned_shape and assigned_level and attributes (as columns)
 #' @export
 #'
+#' @import dplyr
+#' @import tidyr
+#'
 #' @examples
 #' attribute_sim_dep(product_shapes_and_levels=
 #' data.frame(product_id=1:4,assigned_shape=c(1,1,2,2),

@@ -14,6 +14,9 @@
 #' @return A numeric dateframe of three columns: product_id, assigned_shape and assigned_level and attributes (as columns)
 #' @export
 #'
+#' @import dplyr
+#' @import tidyr
+#'
 #' @examples
 #' attribute_sim_ind(product_shapes_and_levels=
 #' data.frame(product_id=1:4,assigned_shape=c(1,1,2,2),
@@ -96,7 +99,6 @@ attribute_shapes_and_levels <- dplyr::left_join(attribute_shapes_and_levels,
                                                 attributes_per_level,
                                                 by = join_by(assigned_level))
 
-
 # assign the attributes to products
 
 product_shapes_and_levels <- dplyr::left_join(product_shapes_and_levels,
@@ -118,7 +120,6 @@ unassigned_attribute_product$attribute <- rep(unassigned_attributes_name,
 unassigned_attribute_product$value <- stats::runif(n=length(unassigned_attribute_product$attribute),
                                                       min = 0,
                                                       max = 1)
-
 
 unassigned_attribute_product <- tidyr::pivot_wider(data = unassigned_attribute_product,
                                                              names_from = attribute,
