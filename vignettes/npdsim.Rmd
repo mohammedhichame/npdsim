@@ -17,3 +17,104 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(npdsim)
 ```
+
+```{r include=FALSE}
+library(ggplot2)
+```
+
+The package npdsim simulates the demand of products over their life cycle. npdsim also simulates the attributes of these products. The simulated data (demand and attributes) can help forecasters and researchers develop, evaluate and compare new product demand forecasting approaches.
+
+npdsim uses the assumption that each new product has a shape and a level where the shape is the normalized demand over the product life cycle, and the level is the cumulative demand across those periods.
+
+Each product has a shape and a level. The demand of a product during a time period is its shape \times level, plus some noise.
+
+Each product has attributes. Some attributes are related to the shape of this product, and some are related to its level. We consider two situations: 1) independent attributes and 2) dependent attributes. In the case of independent attributes, the attributes related to the shape are different than the attributes related to the level. In the case of dependent attributes, some attributes are only related to the shape, some are only related to the level and some are related to the shape and the level, at the same time (the shape and the level are dependent). In both cases, some attributes are neither related to shape nor to level.
+
+Products that have the same shape (level), have the same values fot their attributes related to shape (level) with some noise.
+
+With the function npd_data_sim(), you can generate a data set that contains the demand and attributes of products. For example :
+
+
+npdsim also contains functions that only generate demand, shape, or attributes.
+
+## Simulating demand
+
+The function `demand_sim` creates the demand for new products by simulating first the level and then the shape. For example, 
+
+```{r eval=TRUE}
+demand1 <- demand_sim(products_number=100,
+                      periods_number=20,
+                      shape_number=5, 
+                      shape_type="bass", 
+                      level_number=20,
+                      level_range=1000:10000,
+                      noise_cv=0.05)
+```
+
+In this example, we create the demand for 100 new products over a life cycle of 20 periods where the number of shapes is 5 and the number of levels is 20. The range [1000,10000] is the range from which the level for each product is sampled. The parameter `noise_cv` is the coefficient of variation of the normally distributed noise applied to the generated pure demand (the pure demand is the product of the shape and level). In the example above, we take assume that the type of shapes of the 100 new products is a Bass curve where each new product has a different shape (in this case, different values for the parameters of the Bass curve are taken for each product).
+
+## Simulating level
+
+Regarding the level, for each product, we sample the level from level_range, parameter of the function `demand_sim`, the default range is [1000, 10000]. The sampling is done using the function `sample`. 
+
+## Simulating shape
+
+npdsim first generates generic shapes, and then assign randomoly a shape to each product. The function `shape_sim` creates the generic shapes. For example:
+
+```{r eval=TRUE}
+shape1 <- shape_sim(periods_number=20,
+                    shape_number=5,
+                    shape_type="trapezoid")
+
+head(shape1)
+```
+
+The previous example creates five different shapes over a time interval of 20 periods (from period 1 to period 20), where the five different shape have the same type of shape (trapezoidal). The generated shapes are:
+
+```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
+ggplot(data=shape1)+
+  geom_line(mapping=aes(x=time, 
+                        y=shape,
+                        linetype=factor(assigned_shape)))+
+  theme_bw()
+```
+
+The parameter `shape_type` in the function `shape_sim` can take the following values: "triangle", "trapezoid", "bass", "random" and "intro & growth". The type "random" picks one of the types "triangle", "trapezoid", "bass" randomly for each product. The type "intro & growth" is used for the shapes of the introduction and growth phases.
+
+For example:
+
+```{r eval=TRUE}
+shape2 <- shape_sim(periods_number=20,
+                    shape_number=5,
+                    shape_type="random") #random is the default value
+
+```
+
+
+```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
+ggplot(data=shape2)+
+  geom_line(mapping=aes(x=time, 
+                        y=shape,
+                        linetype=factor(assigned_shape)))
+```
+
+```{r eval=TRUE}
+shape3 <- shape_sim(periods_number=20,
+                    shape_number=5,
+                    shape_type="intro & growth")
+
+```
+
+
+```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
+ggplot(data=shape3)+
+  geom_line(mapping=aes(x=time, 
+                        y=shape,
+                        linetype=factor(assigned_shape)))
+```
+
+If you want to create directly one of the types "triangle", "trapezoid", "bass", "random" or "intro & growth" for all the products, you can use one of the following functions `shape_sim_triangle`, `shape_sim_trapezoid`, `shape_sim_bass`, `shape_sim_random` or `shape_sim_ig`, respectively.
+
+The shapes "triangle", "trapezoid", "bass", "random" correspond to the shapes of product with a relatively short maturity period such as personal computers and durable products in general (we assume that products have four phases in their life cycle: introduction, growth, maturity and decline). See Hu et al (2019) for more information about these types of shapes.
+
+For products with a long maturity period, we simulate only the demand over the introduction and growth phases.
