@@ -12,10 +12,9 @@
 #' @import dplyr
 #'
 #' @examples
-#'piecewise_shape_sim(periods_number=20, shape_number=5)
+#'shape_sim_ig(periods_number=20, shape_number=5)
 #'
-piecewise_shape_sim <- function(periods_number,
-                                shape_number) {
+shape_sim_ig <- function(periods_number, shape_number) {
 
 
   stopifnot("periods_number must be a numeric"=is.numeric(periods_number))
