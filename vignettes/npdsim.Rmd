@@ -34,6 +34,64 @@ Products that have the same shape (level), have the same values fot their attrib
 
 With the function npd_data_sim(), you can generate a data set that contains the demand and attributes of products. For example :
 
+```{r eval=TRUE}
+npd_data1 <- npd_data_sim(products_number=100,
+                         periods_number=30,
+                         shape_number=5,
+                         level_number=20)
+
+str(npd_data1)
+
+```
+
+We plot below the demand of the first 5 products:
+
+```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
+
+npd_data1bis <- dplyr::filter(npd_data1, product_id %in% c(1,2,3,4,5))
+
+ggplot(data=npd_data1bis)+
+  geom_line(mapping=aes(x=time, 
+                        y=demand,
+                        linetype=factor(product_id)))+
+  theme_bw()
+```
+
+We can include more information about the demand and attributes of products. For example :
+
+
+```{r eval=TRUE}
+
+npd_data2 <- npd_data_sim(products_number=10,
+               periods_number=40,
+               shape_number=5,
+               shape_type="bass",
+               level_number=20,
+               level_range=1000:10000,
+               noise_cv=0.05,
+               attribute_type="ind",
+               attributes_number=15,
+               shape_attributes_number=7,
+               level_attributes_number=5)
+
+str(npd_data2)
+
+```
+
+
+The generated demand for the first 5 products (product_id=1,2,...,5) is:
+
+```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
+
+npd_data2bis <- dplyr::filter(npd_data2, product_id %in% c(1,2,3,4,5))
+
+ggplot(data=npd_data2bis)+
+  geom_line(mapping=aes(x=time, 
+                        y=demand,
+                        linetype=factor(product_id)))+
+  theme_bw()
+```
+
 
 npdsim also contains functions that only generate demand, shape, or attributes.
 
