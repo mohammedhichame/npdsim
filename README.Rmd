@@ -35,6 +35,10 @@ pak::pak("mohammedhichame/npdsim")
 
 This is a basic example which shows you how to simulate the demand and attributes of 200 products:
 
+```{r include=FALSE}
+library(ggplot2)
+```
+
 ```{r example}
 library(npdsim)
 
@@ -64,10 +68,9 @@ ggplot(data=npd_data1bis)+
 You can also generate the demand over only the introduction and growth phases of products. For example :
 
 
-```{r example}
-library(npdsim)
+```{r }
 
-npd_data1 <- npd_data_sim(products_number=200,
+npd_data2 <- npd_data_sim(products_number=200,
                          periods_number=40,
                          shape_number=7,
                          level_number=30,
@@ -77,9 +80,9 @@ npd_data1 <- npd_data_sim(products_number=200,
 
 ```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
 
-npd_data1bis <- dplyr::filter(npd_data1, product_id %in% c(1,2,3,4,5))
+npd_data2bis <- dplyr::filter(npd_data2, product_id %in% c(1,2,3,4,5))
 
-ggplot(data=npd_data1bis)+
+ggplot(data=npd_data2bis)+
   geom_line(mapping=aes(x=time, 
                         y=demand,
                         linetype=factor(product_id)))+
