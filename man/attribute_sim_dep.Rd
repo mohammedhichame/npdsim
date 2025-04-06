@@ -21,7 +21,7 @@ attribute_sim_dep(
 \item{level_attributes_number}{The number of attributes assigned to level}
 }
 \value{
-A numeric dateframe of three columns: product_id, assigned_shape and assigned_level and attributes (as columns)
+A numeric dateframe of the following columns: product_id, assigned_shape and assigned_level and attributes (as columns)
 }
 \description{
 Simulate the attributes for each product with the assumption

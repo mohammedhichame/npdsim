@@ -13,7 +13,7 @@
 #' @param shape_attributes_number The number of attributes assigned to shape
 #' @param level_attributes_number The number of attributes assigned to level
 #'
-#' @return A numeric dateframe of three columns: product_id, assigned_shape and assigned_level and attributes (as columns)
+#' @return A numeric dateframe of the following columns: product_id, assigned_shape and assigned_level and attributes (as columns)
 #' @export
 #'
 #' @import dplyr
