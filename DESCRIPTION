@@ -12,7 +12,7 @@ Description: Simulate demand and attributes for ready to launch new products
     is based on the idea that each product has a shape and a level, where the level
     is the cumulative demand over the considered time periods, and the shape is
     the normalized demand across those time periods.
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/mohammedhichame/npdsim
