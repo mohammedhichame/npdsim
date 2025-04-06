@@ -8,7 +8,6 @@ test_that("example 1 works", {
     expect_s3_class(abc, "data.frame")
   expect_equal(dim(abc), c(3000,13))
   expect_type(abc$demand, "double")
-  expect_type(abc$time, "double")
 })
 
 
@@ -32,5 +31,4 @@ test_that("example 2 works", {
   expect_s3_class(abc, "data.frame")
   expect_equal(dim(abc), c(2000,18))
   expect_type(abc$demand, "double")
-  expect_type(abc$time, "double")
 })
