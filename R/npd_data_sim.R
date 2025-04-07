@@ -20,7 +20,6 @@
 #' @param attribute_type Type of relationship between attributes and shape and level.
 #'       There can be independent attributes or dependent attributes. attribute_type takes
 #'       one of the two values: "dep" and "ind". Check `attribute_sim_dep` and `attribute_sim_dep`.
-#' @param product_shapes_and_levels A numeric dateframe of three columns: product_id, assigned_shape and assigned_level
 #' @param attributes_number The number of attributes
 #' @param shape_attributes_number The number of attributes assigned to shape
 #' @param level_attributes_number The number of attributes assigned to level

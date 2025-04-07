@@ -47,8 +47,6 @@ one of the two values: "dep" and "ind". Check `attribute_sim_dep` and `attribute
 \item{shape_attributes_number}{The number of attributes assigned to shape}
 
 \item{level_attributes_number}{The number of attributes assigned to level}
-
-\item{product_shapes_and_levels}{A numeric dateframe of three columns: product_id, assigned_shape and assigned_level}
 }
 \value{
 A date frame that contains the following columns: product_id, demand and attributes.
