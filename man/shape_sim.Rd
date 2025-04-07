@@ -19,7 +19,7 @@ The type "intro & growth" is used for the shapes of the introduction
 and growth phases.}
 }
 \value{
-A numeric dateframe of three colunms: time, shape and assigned_shape
+A numeric dateframe of three columns: time, shape and assigned_shape
 }
 \description{
 Generate the shape of demand for new products by specifying their life cycle

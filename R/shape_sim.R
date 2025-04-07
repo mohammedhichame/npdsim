@@ -13,7 +13,7 @@
 #'            The type "intro & growth" is used for the shapes of the introduction
 #'            and growth phases.
 #'
-#' @return A numeric dateframe of three colunms: time, shape and assigned_shape
+#' @return A numeric dateframe of three columns: time, shape and assigned_shape
 #' @export
 #'
 #' @examples

@@ -12,7 +12,7 @@ shape_sim_bass(periods_number, shape_number)
 \item{shape_number}{Number of generic shapes}
 }
 \value{
-A numeric dateframe of three colunms: time, shape and assigned_shape
+A numeric dateframe of three columns: time, shape and assigned_shape
 }
 \description{
 Generate generic Bass shapes for the demand of new products during their life cycle

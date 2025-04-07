@@ -4,8 +4,8 @@
 #' Simulate the attributes for each product with the assumption
 #' that some of the attributes related to shapes are also related to some
 #' of the attributes of levels.
-#' We mean by dependence the fact that some attributes are related at the same time
-#' to shape and level.
+#' We mean by dependence the fact that some attributes of a product are related
+#' at the same time to its shape and level.
 #'
 #'
 #' @param product_shapes_and_levels A numeric dateframe of three columns: product_id, assigned_shape and assigned_level
@@ -13,7 +13,7 @@
 #' @param shape_attributes_number The number of attributes assigned to shape
 #' @param level_attributes_number The number of attributes assigned to level
 #'
-#' @return A numeric dateframe of the following columns: product_id, assigned_shape and assigned_level and attributes (as columns)
+#' @return A numeric dateframe of the following columns: product_id, assigned_shape, assigned_level and attributes (as columns)
 #' @export
 #'
 #' @import dplyr

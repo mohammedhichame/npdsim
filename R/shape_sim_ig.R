@@ -6,7 +6,7 @@
 #' @param periods_number Number of periods of the introduction and growth phases
 #' @param shape_number Number of generic shapes
 #'
-#' @return A numeric dateframe of three colunms: time, shape and assigned_shape
+#' @return A numeric dateframe of three columns: time, shape and assigned_shape
 #' @export
 #'
 #' @import dplyr

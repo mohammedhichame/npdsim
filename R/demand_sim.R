@@ -1,8 +1,8 @@
 #' Simulate the demand for new products
 #'
 #' @description
-#' Simulate the demand for new products during their life cycle by
-#' specifying their life cycle type of shape
+#' Simulate the demand for new products over their life cycle by
+#' specifying their shape type.
 #'
 #' @param products_number Number of products
 #' @param periods_number Number of periods of the introduction and growth phases
