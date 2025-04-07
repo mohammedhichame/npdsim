@@ -1,7 +1,7 @@
 Package: npdsim
 Type: Package
 Title: Simulate Demand and Attributes for New Products
-Version: 0.1.0
+Version: 0.8.0
 Authors@R: person("Mohammed Hichame", "BENBITOUR", email = "res.mhichame@gmail.com",
   role = c("aut", "cre"))
 Description: Simulate demand and attributes for ready to launch new products 
