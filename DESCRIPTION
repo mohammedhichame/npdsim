@@ -3,7 +3,7 @@ Type: Package
 Title: Simulate Demand and Attributes for New Products
 Version: 0.8.0
 Authors@R: person("Mohammed Hichame", "BENBITOUR", email = "res.mhichame@gmail.com",
-  role = c("aut", "cre"))
+  role = c("aut", "cre", "cph"))
 Description: Simulate demand and attributes for ready to launch new products 
     during their life cycle, or during their introduction and growth phases.
     You provide the number of products, attributes, time periods and/or other parameters 
