@@ -53,7 +53,7 @@ str(npd_data1)
 
 ```
 
-The demand for the products with product_id=1,2,...,5 is shown below:
+We show below, the plots of demand for the products with product_id=1,2,...,5:
 
 ```{r eval=TRUE, echo=FALSE, fig.dim = c(8, 4)}
 
