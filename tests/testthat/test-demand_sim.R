@@ -96,3 +96,21 @@ test_that("using a big number of levels works", {
   expect_type(abc$demand, "double")
 
 })
+
+
+test_that("simulating demand for one product works", {
+
+  abc <- demand_sim(products_number=1,
+                    periods_number=20,
+                    shape_number=20,
+                    shape_type="bass",
+                    level_number=300,
+                    level_range=1000:1200,
+                    noise_cv=0.05)
+
+  expect_s3_class(abc, "data.frame")
+  expect_equal(dim(abc), c(2000,9))
+  expect_type(abc$shape, "double")
+  expect_type(abc$demand, "double")
+
+})
