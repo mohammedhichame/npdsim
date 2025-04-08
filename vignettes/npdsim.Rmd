@@ -22,7 +22,7 @@ library(npdsim)
 library(ggplot2)
 ```
 
-The package npdsim simulates the demand of products over their life cycle. npdsim also simulates the attributes of these products. The simulated data (demand and attributes) can help forecasters and researchers develop, evaluate and compare new product demand forecasting approaches.
+The package npdsim simulates the demand for products over their life cycle. npdsim also simulates the attributes of these products. The simulated data (demand and attributes) can help forecasters and researchers develop, evaluate and compare new product demand forecasting approaches.
 
 npdsim uses the assumption that each new product has a shape and a level where the shape is the normalized demand over the product life cycle, and the level is the cumulative demand across those periods.
 
@@ -30,7 +30,7 @@ Each product has a shape and a level. The demand of a product during a time peri
 
 Each product has attributes. Some attributes are related to the shape of this product, and some are related to its level. We consider two situations: 1) independent attributes and 2) dependent attributes. In the case of independent attributes, the attributes related to the shape are different than the attributes related to the level. In the case of dependent attributes, some attributes are only related to the shape, some are only related to the level and some are related to the shape and the level, at the same time (the shape and the level are dependent). In both cases, some attributes are neither related to shape nor to level.
 
-Products that have the same shape (level), have the same values fot their attributes related to shape (level) with some noise.
+Products that have the same shape (level), have the same values for their attributes related to shape (level) with some noise.
 
 With the function npd_data_sim(), you can generate a data set that contains the demand and attributes of products. For example :
 
@@ -57,7 +57,7 @@ ggplot(data=npd_data1bis)+
   theme_bw()
 ```
 
-We can include more information about the demand and attributes of products. For example :
+We can specify the type of demand shape and the number of attributes (and other information). For example :
 
 
 ```{r eval=TRUE}
@@ -173,6 +173,6 @@ ggplot(data=shape3)+
 
 If you want to create directly one of the types "triangle", "trapezoid", "bass", "random" or "intro & growth" for all the products, you can use one of the following functions `shape_sim_triangle`, `shape_sim_trapezoid`, `shape_sim_bass`, `shape_sim_random` or `shape_sim_ig`, respectively.
 
-The shapes "triangle", "trapezoid", "bass", "random" correspond to the shapes of product with a relatively short maturity period such as personal computers and durable products in general (we assume that products have four phases in their life cycle: introduction, growth, maturity and decline). See Hu et al (2019) for more information about these types of shapes.
+The shapes "triangle", "trapezoid", "bass", "random" correspond to the shapes of product with a relatively short maturity period such as personal computers and durable products in general (we assume that products have four phases in their life cycle: introduction, growth, maturity and decline).
 
-For products with a long maturity period, we simulate only the demand over the introduction and growth phases.
+For products with a long maturity period, we can simulate only the demand over the introduction and growth phases (by setting shape_type="intro & growth").

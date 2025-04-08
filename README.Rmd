@@ -34,7 +34,7 @@ pak::pak("mohammedhichame/npdsim")
 
 ## Example
 
-This is a basic example which shows you how to simulate the demand and attributes of 200 products:
+This is a basic example which shows you how to simulate the demand and attributes for 200 products:
 
 ```{r include=FALSE}
 library(ggplot2)
