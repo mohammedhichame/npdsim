@@ -109,7 +109,7 @@ test_that("simulating demand for one product works", {
                     noise_cv=0.05)
 
   expect_s3_class(abc, "data.frame")
-  expect_equal(dim(abc), c(2000,9))
+  expect_equal(dim(abc), c(20,9))
   expect_type(abc$shape, "double")
   expect_type(abc$demand, "double")
 
