@@ -29,7 +29,6 @@
 #' @export
 #'
 #' @import dplyr
-#' @import tidyr
 #'
 #' @examples
 #' npd_data_sim(products_number=100,
@@ -71,7 +70,11 @@ demand_np <- demand_sim(products_number,
              level_range,
              noise_cv)
 
-demand_np1 <- dplyr::select(demand_np, product_id, assigned_shape, assigned_level)
+demand_np1 <- dplyr::select(demand_np,
+                            product_id,
+                            assigned_shape,
+                            assigned_level)
+
 
 demand_np1 <- dplyr::distinct(demand_np1)
 
@@ -101,11 +104,11 @@ demand_np <- dplyr::left_join(demand_np,
                                            assigned_level))
 
 dplyr::select(demand_np,-c(assigned_shape,
-                             assigned_level,
-                             level,
-                             shape,
-                             demand_wn,
-                             noise))
+                           assigned_level,
+                           level,
+                           shape,
+                           demand_wn,
+                           noise))
 
 
 }

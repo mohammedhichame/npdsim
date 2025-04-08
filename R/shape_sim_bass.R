@@ -10,6 +10,7 @@
 #' @export
 #'
 #' @import dplyr
+#' @importFrom rlang .data
 #'
 #' @examples
 #' shape_sim_bass(periods_number=20, shape_number=5)
@@ -58,7 +59,7 @@ shape_sim_bass <- function(periods_number,shape_number) {
 
   xout <- x_full[!(x_full %in% shape2$time)]
 
-  yout <- approx(x=shape2$time, y = shape2$shape, xout=xout, method = "linear")
+  yout <- stats::approx(x=shape2$time, y = shape2$shape, xout=xout, method = "linear")
 
   shape3 <- data.frame(time=xout,
                        shape=yout$y)
@@ -68,7 +69,7 @@ shape_sim_bass <- function(periods_number,shape_number) {
 
   shape4 <- dplyr::bind_rows(shape2_bis, shape3)
 
-  shape4 <- dplyr::arrange(shape4, time)
+  shape4 <- dplyr::arrange(shape4, .data$time)
 
 
   # normalize the shape
