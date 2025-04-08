@@ -10,6 +10,8 @@
 #' @return A numeric dateframe of three columns: time, shape and assigned_shape
 #' @export
 #'
+#' @import dplyr
+#'
 #' @examples
 #' shape_sim_triangle(periods_number=20, shape_number=5)
 shape_sim_triangle <- function(periods_number,shape_number) {
