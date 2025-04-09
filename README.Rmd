@@ -28,8 +28,8 @@ The simulation of demand is based on the idea that each product has a demand lev
 You can install the development version of npdsim from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pak")
-pak::pak("mohammedhichame/npdsim")
+# install.packages("npdsim")
+library(npdsim)
 ```
 
 ## Example
